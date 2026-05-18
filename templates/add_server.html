@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Server</title>
+
+    <style>
+
+        body {
+            background-color: #0f172a;
+            font-family: Arial;
+            color: white;
+        }
+
+        .container {
+            width: 400px;
+            margin: 80px auto;
+            background-color: #111827;
+            padding: 30px;
+            border-radius: 10px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border-radius: 6px;
+            border: none;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 6px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h2>Add Infrastructure Server</h2>
+
+    <form method="POST">
+
+        <input type="text" name="hostname" placeholder="Hostname" required>
+
+        <input type="text" name="ip_address" placeholder="IP Address" required>
+
+        <select name="environment">
+
+            <option>Production</option>
+            <option>Staging</option>
+            <option>Development</option>
+
+        </select>
+
+        <input type="text" name="role" placeholder="Server Role" required>
+
+        <select name="status">
+
+            <option>Active</option>
+            <option>Down</option>
+
+        </select>
+
+        <button type="submit">Add Server</button>
+
+    </form>
+
+</div>
+
+</body>
+</html>

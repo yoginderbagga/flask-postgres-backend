@@ -175,53 +175,28 @@
 
         <table>
 
-            <tr>
-                <th>Hostname</th>
-                <th>IP Address</th>
-                <th>Environment</th>
-                <th>Role</th>
-                <th>Status</th>
-                <th>Action</th>
-            </tr>
+            {% for server in servers %}
 
-            <tr>
-                <td>prod-web-01</td>
-                <td>10.0.1.10</td>
-                <td>Production</td>
-                <td>Flask Application</td>
-                <td class="status-active">Active</td>
+<tr>
 
-                <td class="action-links">
-                    <a href="#">Edit</a>
-                    <a href="#">Delete</a>
-                </td>
-            </tr>
+    <td>{{ server[1] }}</td>
+    <td>{{ server[2] }}</td>
+    <td>{{ server[3] }}</td>
+    <td>{{ server[4] }}</td>
 
-            <tr>
-                <td>prod-db-01</td>
-                <td>10.0.1.11</td>
-                <td>Production</td>
-                <td>PostgreSQL Database</td>
-                <td class="status-active">Active</td>
+    <td class="status-active">
+        {{ server[5] }}
+    </td>
 
-                <td class="action-links">
-                    <a href="#">Edit</a>
-                    <a href="#">Delete</a>
-                </td>
-            </tr>
+    <td class="action-links">
+        <a href="/edit-server/{{ server[0] }}">Edit</a>
+        <a href="/delete-server/{{ server[0] }}">Delete</a>
+    </td>
 
-            <tr>
-                <td>monitor-01</td>
-                <td>10.0.1.20</td>
-                <td>Monitoring</td>
-                <td>Grafana Server</td>
-                <td class="status-active">Active</td>
+</tr>
 
-                <td class="action-links">
-                    <a href="#">Edit</a>
-                    <a href="#">Delete</a>
-                </td>
-            </tr>
+{% endfor %}
+
 
         </table>
 

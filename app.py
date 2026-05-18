@@ -84,13 +84,100 @@ def login():
     return render_template("login.html")
 
 
+
+
 @app.route("/dashboard")
 def dashboard():
 
-    if "user" in session:
-        return render_template("dashboard.html", user=session["user"])
+    if "user" not in session:
+        return redirect("/login")
 
-    return redirect("/login")
+    conn = get_db_connection()
+    cur = conn.cursor()
+
+    cur.execute("SELECT * FROM servers")
+    servers = cur.fetchall()
+
+    total_servers = len(servers)
+
+    production_count = len(
+        [s for s in servers if s[3] == "Production"]
+    )
+
+    staging_count = len(
+        [s for s in servers if s[3] == "Staging"]
+    )
+
+    cur.close()
+    conn.close()
+
+    return render_template(
+        "dashboard.html",
+        user=session["user"],
+        servers=servers,
+        total_servers=total_servers,
+        production_count=production_count,
+        staging_count=staging_count
+    )
+
+@app.route("/add-server", methods=["GET", "POST"])
+def add_server():
+
+    if "user" not in session:
+        return redirect("/login")
+
+    if request.method == "POST":
+
+        hostname = request.form["hostname"]
+        ip_address = request.form["ip_address"]
+        environment = request.form["environment"]
+        role = request.form["role"]
+        status = request.form["status"]
+
+        conn = get_db_connection()
+        cur = conn.cursor()
+
+        cur.execute(
+            """
+            INSERT INTO servers
+            (hostname, ip_address, environment, role, status)
+            VALUES (%s, %s, %s, %s, %s)
+            """,
+            (
+                hostname,
+                ip_address,
+                environment,
+                role,
+                status
+            )
+        )
+
+        conn.commit()
+
+        cur.close()
+        conn.close()
+
+        return redirect("/dashboard")
+
+    return render_template("add_server.html")
+
+@app.route("/delete-server/<int:id>")
+def delete_server(id):
+
+    conn = get_db_connection()
+    cur = conn.cursor()
+
+    cur.execute(
+        "DELETE FROM servers WHERE id=%s",
+        (id,)
+    )
+
+    conn.commit()
+
+    cur.close()
+    conn.close()
+
+    return redirect("/dashboard")
 
 
 @app.route("/logout")
