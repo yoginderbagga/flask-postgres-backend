@@ -4,12 +4,15 @@ import psycopg2
 app = Flask(__name__)
 app.secret_key = "devopsprojectsecret"
 
-conn = psycopg2.connect(
-    host="localhost",
-    database="flaskapp",
-    user="postgres",
-    password="Gikomo@13579"
-)
+
+def get_db_connection():
+    return psycopg2.connect(
+        host="db",
+        database="flaskdb",
+        user="postgres",
+        password="mypass",
+        port=5432
+    )
 
 
 @app.route("/")
@@ -25,15 +28,25 @@ def register():
         email = request.form["email"]
         password = request.form["password"]
 
+        conn = get_db_connection()
         cur = conn.cursor()
 
-        cur.execute(
-            "INSERT INTO users (name, email, password) VALUES (%s, %s, %s)",
-            (name, email, password)
-        )
+        try:
+            cur.execute(
+                "INSERT INTO users (name, email, password) VALUES (%s, %s, %s)",
+                (name, email, password)
+            )
 
-        conn.commit()
-        cur.close()
+            conn.commit()
+
+        except Exception as e:
+            conn.rollback()
+            print("REGISTER ERROR:", e)
+            return "Internal Server Error", 500
+
+        finally:
+            cur.close()
+            conn.close()
 
         return redirect("/login")
 
@@ -47,16 +60,20 @@ def login():
         email = request.form["email"]
         password = request.form["password"]
 
+        conn = get_db_connection()
         cur = conn.cursor()
 
-        cur.execute(
-            "SELECT * FROM users WHERE email=%s AND password=%s",
-            (email, password)
-        )
+        try:
+            cur.execute(
+                "SELECT * FROM users WHERE email=%s AND password=%s",
+                (email, password)
+            )
 
-        user = cur.fetchone()
+            user = cur.fetchone()
 
-        cur.close()
+        finally:
+            cur.close()
+            conn.close()
 
         if user:
             session["user"] = user[1]
