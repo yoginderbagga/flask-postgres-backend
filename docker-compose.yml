@@ -1,4 +1,5 @@
 services:
+
   web:
     build: .
     container_name: flaskapp
@@ -22,30 +23,25 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
-volumes:
-  postgres_data:
-
   prometheus:
     image: prom/prometheus
     container_name: prometheus
-
     ports:
       - "9090:9090"
-
     volumes:
       - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
 
   grafana:
     image: grafana/grafana
     container_name: grafana
-
     ports:
       - "3000:3000"
 
-    
-    node-exporter:
-      image: prom/node-exporter
-      container_name: node-exporter
+  node-exporter:
+    image: prom/node-exporter
+    container_name: node-exporter
+    ports:
+      - "9100:9100"
 
-      ports:
-        - "9100:9100"
+volumes:
+  postgres_data:
