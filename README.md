@@ -37,12 +37,58 @@ This project assume that you already have a AWS Free Tier account and an Ubuntu 
 1. Install python package on Ubuntu EC2.
 2. Install Flask package.
 3. Install Gunicorn WSGI http server to allow Nginx to communicate with Python.
-4. Install Postgresql DB packages for the purpose of data storage.
+4. Install Postgresql DB packages for the purpose of data storage and psycopg2 - Python-PostgreSQL Database Adapter
 5. Install Nginx package.
+6. Install docker package and docker-compose-plugin
+
 
 
 **Building the application : Flaskapp**
 
-Once the above packages are installed, you can being with setting up the [Flaskapp](https://github.com/yoginderbagga/flask-postgres-backend/blob/main/app.py) on your laptop. 
+
+Once the above packages are installed, you can begin with setting up the [Flaskapp](https://github.com/yoginderbagga/flask-postgres-backend/blob/main/app.py) on your laptop. Proceed with running the app.py application to check if the web-application works or not. As you run the app, go to the browser and verify if the login.html page open for you. Click on the "Register" button to create a new account and then proceed with a fresh login on a new page. 
+
+You may or may not receive an error message depending upon how properly you have followed the instructions to configure this on your machine. Hence I will list down all the challenges, errors I faced in the 
+following section but if its working fine for you. Continue following the guide. 
+
+## Phase 1 — Initial EC2 Setup
+#### Step a) — Go to your AWS Account and Launch EC2 Instance ( t3.micro ) and allow the inbound security groups including :
+- 8000 : For flask web-app connectivity
+- 3000 : For Grafana monitoring tool
+- 9090 : For Prometheus 
+- 9100 : For Node exporter.
+
+#### Step b) — SSH to the EC2 instance using the public IP address as you will be doing all work on AWS Cloud instance. 
+
+
+
+
+Nginx Web-Server Configuration: 
+
+
 
 ### Challenges During Project
+
+
+
+
+
+**Directory Structure**
+
+```text
+hello/
+├── app.py
+├── requirements.txt
+├── Dockerfile
+├── docker-compose.yml
+├── templates/
+│   ├── login.html
+│   ├── register.html
+│   └── dashboard.html
+├── monitoring/
+│   └── prometheus.yml
+├── .github/
+│   └── workflows/
+│       └── deploy.yml
+└── static/
+```
