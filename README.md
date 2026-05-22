@@ -99,12 +99,86 @@ pip install -r requirements.txt
 python3 app.py
 ```
 
+## Phase 3 —  Nginx Web-Server Configuration and Gunicorn setup
 
-Nginx Web-Server Configuration: 
+#### Step a) — Install Gunicorn WSGI HTTP Server for allowing the python object to communicate with the nginx server. 
+
+```
+pip install gunicorn
+```
+#### Step b) —  Start the Gunicorn
+
+```
+gunicorn -b 0.0.0.0:8000 app:app
+```
+#### Step c)  — Configuring the Nginx revere proxy server. 
+Create a configuration file for flaskapp in the Nginx configuration directory : "/etc/nginx/sites-available/flaskapp"
+
+```
+server {
+    listen 80;
+
+    server_name EC2_PUBLIC_IP;
+
+    location / {
+        proxy_pass http://127.0.0.1:8000;
+
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+    }
+}
+```
+
+#### Step d)  —  Enable Nginx Site
+
+```
+sudo ln -s /etc/nginx/sites-available/flaskapp /etc/nginx/sites-enabled/
+```
+#### Step e)  —  Test Nginx Configuration
+
+```
+sudo nginx -t
+```
+#### Step f)  —  Restart Nginx serverice 
+
+```
+sudo systemctl restart nginx
+```
+
+## Phase 4 —   Implementing systemd service unit to make the web-app start right after the reboot ( earlier deployment model ) 
+
+Create a service unit file 
+
+```
+sudo nano /etc/systemd/system/flaskapp.service
+```
+
+```
+[Unit]
+Description=Flask Application
+After=network.target
+
+[Service]
+User=ubuntu
+WorkingDirectory=/home/ubuntu/hello
+Environment="PATH=/home/ubuntu/hello/venv/bin"
+ExecStart=/home/ubuntu/hello/venv/bin/gunicorn -b 0.0.0.0:8000 app:app
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+```
+Enabled the systemd unit service for flaskapp
+```
+sudo systemctl daemon-reload
+sudo systemctl enable flaskapp
+sudo systemctl start flaskapp
+```
+
+## Phase 5 — Migrate to dockerize architecture for the flaskapp.
 
 
-
-### Challenges During Project
+### What were the challenges during the project setup and troubleshooting steps?
 
 
 
