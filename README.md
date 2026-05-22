@@ -60,7 +60,44 @@ following section but if its working fine for you. Continue following the guide.
 
 #### Step b) — SSH to the EC2 instance using the public IP address as you will be doing all work on AWS Cloud instance. 
 
+```
+ssh -i your-key.pem ubuntu@EC2-PUBLIC-IP
+```
 
+#### Step c) — Update the Ubuntu packages to ensure Ubuntu OS have relevant updates. 
+
+```
+sudo apt update && sudo apt upgrade -y
+```
+
+## Phase 2 — Setting up the Flaskapp web-application ( First build without the dockerization )
+#### Step a) — Install the Python packages, dependencies and GIT package. 
+
+```
+sudo apt install python3-pip python3-venv nginx git -y
+```
+#### Step b) — Clone project repository on your EC2 instance ~/hello folder
+
+```
+git clone git@github.com:yoginderbagga/flask-postgres-backend.git
+cd hello
+```
+
+#### Step c) —  Setup a virtual environment for your python code to keep it seperate with rest of your system applications. 
+```
+python3 -m venv venv
+source venv/bin/activate
+```
+#### Step d) —  Installing Flask Requirements
+
+```
+pip install -r requirements.txt
+```
+#### Step e) —  Run Flask Application
+
+```
+python3 app.py
+```
 
 
 Nginx Web-Server Configuration: 
