@@ -55,7 +55,7 @@ hello/
 
 **Envirionment Setup**
 
-This project assume that you already have a AWS Free Tier account and an Ubuntu EC2 installed on it. If not you can do that first and then follow below steps to setup your backend framework using Flask, Gunicorn. 
+This project assume that you already have a AWS Free Tier account and an Ubuntu EC2 installed on it. If not you can do that first and then follow below steps to setup your backend framework using Flask, Gunicorn. Everything will be accessed via the EC2 host URL only with the respective port of the application. 
 
 1. Install python package on Ubuntu EC2.
 2. Install Flask package.
