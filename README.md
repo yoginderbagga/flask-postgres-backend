@@ -21,6 +21,9 @@ Network Traffic Basic, Disk Space Basic and much more.
 - Postgre SQL
 - pgAdmin     [ Not using this : Flaskapp directly connecting with Postgresql DB on my EC2 instance docker ]
 - MS Visual Code
+- Grafana
+- Prometheus
+- Node Exporter
 
 **Directory Structure**
 
