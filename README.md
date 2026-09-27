@@ -180,9 +180,28 @@ sudo systemctl start flaskapp
 
 ### What were the challenges during the project setup and troubleshooting steps?
 
+[Updated : 27th Sep, 2026]
+
+- Error during migrating the application to Docker Compose: Below error received, when registering the user details on login page. In ``app.py`` go to the custom database connection function, and found that hostname was  ``host="localhost"`` which works only for your localhost environment. However, if use ``db`` then it does works, because each time you restart the EC2 instance or change the IP address then docker don't have to worry about the IP address. ( While localhost will only point to that specific container, and db is the service name in the docker compose file)
+- Error during data insertion, since there was no database, table created, you need to verify this as well if they still exists or not. (**Later** create a proper backup so each time you don't have to create the table again and again)
 
 
 
+```
+ File "/app/app.py", line 31, in register
+    conn = get_db_connection()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/app/app.py", line 9, in get_db_connection
+    return psycopg2.connect(
+           ^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.OperationalError: connection to server at "localhost" (::1), port 5432 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5432 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+```
 
 **Directory Structure**
 
