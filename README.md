@@ -22,6 +22,26 @@ Network Traffic Basic, Disk Space Basic and much more.
 - pgAdmin     [ Not using this : Flaskapp directly connecting with Postgresql DB on my EC2 instance docker ]
 - MS Visual Code
 
+**Directory Structure**
+
+```text
+hello/
+├── app.py
+├── requirements.txt
+├── Dockerfile
+├── docker-compose.yml
+├── templates/
+│   ├── login.html
+│   ├── register.html
+│   └── dashboard.html
+├── monitoring/
+│   └── prometheus.yml
+├── .github/
+│   └── workflows/
+│       └── deploy.yml
+└── static/
+```
+
 ### Key Features
 
 - Containerizatio: Used Docker to containerize the Flask web-application.
@@ -203,22 +223,4 @@ connection to server at "localhost" (127.0.0.1), port 5432 failed: Connection re
 	Is the server running on that host and accepting TCP/IP connections?
 ```
 
-**Directory Structure**
 
-```text
-hello/
-├── app.py
-├── requirements.txt
-├── Dockerfile
-├── docker-compose.yml
-├── templates/
-│   ├── login.html
-│   ├── register.html
-│   └── dashboard.html
-├── monitoring/
-│   └── prometheus.yml
-├── .github/
-│   └── workflows/
-│       └── deploy.yml
-└── static/
-```
