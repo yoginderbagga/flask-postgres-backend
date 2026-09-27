@@ -74,6 +74,13 @@ Once the above packages are installed, you can begin with setting up the [Flaska
 You may or may not receive an error message depending upon how properly you have followed the instructions to configure this on your machine. Hence I will list down all the challenges, errors I faced in the 
 following section but if its working fine for you. Continue following the guide. 
 
+**Monitoring the application : Prometheus + Grafana + Node Exporter**
+
+- Node Exporter: A simple lightweight application which collects Unix based OS metrics and hardware info and then transfer them to relevant application for the monitoring purpose. Metrics include: ``CPU load`` ``memory consumption``, ``disk usage``, ``network traffic`` and much more. Remember that "Node Exporter" never stored any data which it collects in any database, any storage layer or memory cache. Basically it fetches the live data for Prometheus to monitor and analyze. 
+- Prometheus: An open-source monitoring tool which gather the data from Node Exporter (or other tool), and store it as a time series data. It actively pulls live data by sending the HTTP request to targe server at regular intervals. 
+- Grafana: It is prominent data visualization tool used with Prometheus to build the dashboard of your metrics stats. 
+
+
 ## Phase 1 — Initial EC2 Setup
 #### Step a) — Go to your AWS Account and Launch EC2 Instance ( t3.micro ) and allow the inbound security groups including :
 - 8000 : For flask web-app connectivity
