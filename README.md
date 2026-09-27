@@ -259,7 +259,11 @@ connection to server at "localhost" (127.0.0.1), port 5432 failed: Connection re
 
 ### Continuous Integration - Pipeline Output
 
+To test the pipeline, go to the login.html file make a change at the text login with "Test Login" and commit the changes. Verified at "Actions" tab and pipeline ran fine, below is the result. 
 
+<img width="1900" height="1032" alt="image" src="https://github.com/user-attachments/assets/5ea04fe6-83eb-4c9b-92ec-45a0186c34de" />
+
+<img width="1892" height="1077" alt="image" src="https://github.com/user-attachments/assets/6743c435-6d94-49dd-9793-1a2bffc6b0e0" />
 
 
 
