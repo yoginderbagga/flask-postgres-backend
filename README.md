@@ -66,7 +66,7 @@ This project assume that you already have a AWS Free Tier account and an Ubuntu 
 
 
 
-**Building the application : Flaskapp**
+**Building the application : Flaskapp (Flask, Gunicorn, Nginx)**
 
 
 Once the above packages are installed, you can begin with setting up the [Flaskapp](https://github.com/yoginderbagga/flask-postgres-backend/blob/main/app.py) on your laptop. Proceed with running the app.py application to check if the web-application works or not. As you run the app, go to the browser and verify if the login.html page open for you. Click on the "Register" button to create a new account and then proceed with a fresh login on a new page. 
