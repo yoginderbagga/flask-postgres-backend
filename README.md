@@ -226,4 +226,25 @@ connection to server at "localhost" (127.0.0.1), port 5432 failed: Connection re
 	Is the server running on that host and accepting TCP/IP connections?
 ```
 
+### Project Screenshots - Final Output
+
+#### Application Output:
+
+
+<img width="1897" height="1067" alt="image" src="https://github.com/user-attachments/assets/a2ae379a-60c3-44c0-8348-283909bbdb13" />
+
+<img width="1905" height="1072" alt="image" src="https://github.com/user-attachments/assets/cc182c9a-9e96-4ec0-a3bd-2d803b8001f8" />
+
+<img width="1902" height="560" alt="image" src="https://github.com/user-attachments/assets/241921f5-858e-47d2-86c0-c7f48334f720" />
+
+#### Monitoring Stack: 
+
+
+<img width="1900" height="1070" alt="image" src="https://github.com/user-attachments/assets/4918f6d9-dfda-4306-9e0f-af3b901f725f" />
+
+<img width="1902" height="790" alt="image" src="https://github.com/user-attachments/assets/affd665e-6e8f-4444-bd54-e5985c21cdab" />
+
+
+
+
 
