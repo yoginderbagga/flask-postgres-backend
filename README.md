@@ -266,5 +266,8 @@ To test the pipeline, go to the login.html file make a change at the text login 
 <img width="1892" height="1077" alt="image" src="https://github.com/user-attachments/assets/6743c435-6d94-49dd-9793-1a2bffc6b0e0" />
 
 
+Output # 2 
+
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/798d5274-bdee-4d4a-97db-67420cd93962" />
 
 
