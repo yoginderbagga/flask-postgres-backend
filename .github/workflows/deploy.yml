@@ -26,7 +26,7 @@ jobs:
 
       - name: Run pytest
         run: |
-          pytest -m pytest tests/
+          python -m pytest tests/
 
 
   deploy:
