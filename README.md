@@ -235,6 +235,12 @@ psycopg2.OperationalError: connection to server at "localhost" (::1), port 5432 
 	Is the server running on that host and accepting TCP/IP connections?
 connection to server at "localhost" (127.0.0.1), port 5432 failed: Connection refused
 	Is the server running on that host and accepting TCP/IP connections?
+
+### Date: 29th Sep, 2026
+
+- After submitting the user info, it gave error message for the internal server. Had to rebuild the containers with docker compose. ( Possibly due to docker compose networking issue )
+- Error during continuous integration, as the one of the action in pipeline didn't run. SSH issue was there since EC2 IP address was changed, after updating the latest public IP in GitHub Actions Secret it worked. 
+
 ```
 
 ### Project Screenshots - Final Output
