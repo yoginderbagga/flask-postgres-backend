@@ -24,6 +24,7 @@ Network Traffic Basic, Disk Space Basic and much more.
 - Grafana
 - Prometheus
 - Node Exporter
+- SonarQube
 
 **Directory Structure**
 
@@ -32,6 +33,9 @@ hello/
 ├── app.py
 ├── requirements.txt
 ├── Dockerfile
+├── myenv
+├── monitoring
+├── sonar-project.properties
 ├── docker-compose.yml
 ├── templates/
 │   ├── login.html
@@ -42,6 +46,7 @@ hello/
 ├── .github/
 │   └── workflows/
 │       └── deploy.yml
+| 
 └── static/
 ```
 
