@@ -281,4 +281,6 @@ Output # 2
 
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/798d5274-bdee-4d4a-97db-67420cd93962" />
 
+### Continuous Integration - Added SonarQube"
 
+Added SonarQube for Static Code Analysis, catch bugs, security vulnerability scanning before the code reach the production. 
