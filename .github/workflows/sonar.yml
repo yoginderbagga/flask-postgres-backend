@@ -12,8 +12,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: SonarCloud Scan
-        uses: SonarSource/sonarcloud-github-action@e44258b1051901ccd05dd247f12e84784c0422c5
-
+        uses: SonarSource/sonarqube-scan-action@6440c7398239864bf06dd65f6800d5beefe34ba2
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 #          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
