@@ -2,7 +2,7 @@ services:
 
   web:
     build: .
-    container_name: flaskapp
+#    container_name: flaskapp
     ports:
       - "8000:8000"
     env_file:
@@ -12,7 +12,7 @@ services:
 
   db:
     image: postgres:16
-    container_name: postgresdb
+ #   container_name: postgresdb
     restart: always
     environment:
       POSTGRES_DB: flaskdb
