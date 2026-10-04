@@ -284,4 +284,6 @@ Output # 2
 
 ### Continuous Integration - Added SonarQube"
 
-Added SonarQube for Static Code Analysis, catch bugs, security vulnerability scanning before the code reach the production. 
+- Added SonarQube for Static Code Analysis, catch bugs, security vulnerability scanning before the code reach the production.
+- Added Dependency Caching so that cache packages can be reused instead of re-downloading them each time in fresh runner.
+
