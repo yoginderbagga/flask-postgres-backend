@@ -222,7 +222,8 @@ sudo systemctl start flaskapp
 [Updated : 27th Sep, 2026]
 
 - Error during migrating the application to Docker Compose: Below error received, when registering the user details on login page. In ``app.py`` go to the custom database connection function, and found that hostname was  ``host="localhost"`` which works only for your localhost environment. However, if use ``db`` then it does works, because each time you restart the EC2 instance or change the IP address then docker don't have to worry about the IP address. ( While localhost will only point to that specific container, and db is the service name in the docker compose file)
-- Error during data insertion, since there was no database, table created, you need to verify this as well if they still exists or not. (**Later** create a proper backup so each time you don't have to create the table again and again)
+- [ Update : 4th Oct] Removed the ports 5432 entirely along with the containers name from the docker-compose file. Now I verified even after the restart of the machine or next day, it doesn't give the previous DNS error message anymore. 
+- Error during data insertion, since there was no database, table created, you need to verify this as well if they still exists or not. (**Later** create a proper backup so each time you don't have to create the table again and again) 
 
 
 
