@@ -2,7 +2,7 @@
 
 ### Descriptions
 
-Welcome to this project! In this project, we have build a flask based inventory dashboard for the servers. This web-application keeps track of all the stage, production and development
+Welcome to this project! Here, we have build a flask based inventory dashboard for the servers. This web-application keeps track of all the stage, production and development
 servers currently available in the database. With this app, users can quickly check the status of total servers, delete, and edit the records. Since we have used docker to 
 containerized it, you can easily setup the app on your Mac, Linux and Windows machine. This is completely hosted on AWS Coud to keep the cost as minimum as possible, and we have
 also added monitoring functionality using the Grafana, prometheus tool. Using that you can check the performance of your EC2 Instance with stats like : CPU Basic, Memory Basic,
